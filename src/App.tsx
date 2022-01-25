@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NotFound from "./components/NotFound";
+import AlbumPage from "./pages/AlbumPage";
+import HomePage from "./pages/HomePage";
+import PhotoPage from "./pages/PhotoPage";
+import PostPage from "./pages/PostPage";
+import UserPage from "./pages/UserPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route path="*" element={<NotFound />} />
+					<Route path="/" element={<HomePage />}></Route>
+					<Route path="users/:userId" element={<UserPage />} />
+					<Route path="posts/:postId" element={<PostPage />} />
+					<Route path="albums/:albumId" element={<AlbumPage />} />
+					<Route path="/photos/:photoId" element={<PhotoPage />} />
+				</Routes>
+			</BrowserRouter>
+		</>
+	);
 }
 
 export default App;
